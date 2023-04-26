@@ -3,6 +3,7 @@ import type { NextPage } from "next";
 import type { AppProps } from "next/app";
 import { ChakraProvider } from "@chakra-ui/react";
 import { ReactElement, ReactNode } from "react";
+import { RecoilRoot } from "recoil";
 import theme from "@/theme";
 
 export type NextPageWithLayout<P = {}, IP = P> = NextPage<P, IP> & {
@@ -18,7 +19,7 @@ export default function App({ Component, pageProps }: AppPropsWithLayout) {
 
   return (
     <ChakraProvider theme={theme}>
-      {getLayout(<Component {...pageProps} />)}
+      <RecoilRoot>{getLayout(<Component {...pageProps} />)}</RecoilRoot>
     </ChakraProvider>
   );
 }
