@@ -1,0 +1,27 @@
+[
+  {
+    "id":1,
+    "name":"Basha",
+    "lastMessage":"Last message"
+  },
+  {
+    "id":2,
+    "name":"Alam",
+    "lastMessage":"Last message"
+  },
+  {
+    "id":3,
+    "name":"Kundan",
+    "lastMessage":"Last message"
+  },
+  {
+    "id":4,
+    "name":"K Basha",
+    "lastMessage":"Last message"
+  },
+  {
+    "id":5,
+    "name":"A Basha",
+    "lastMessage":"Last message"
+  }
+]
