@@ -5,7 +5,6 @@ import { FormEvent, useState } from "react";
 import { useSetRecoilState, useRecoilValue } from "recoil";
 import messagesAtom from "@/recoil/messages";
 import activeUser from "@/recoil/active-user";
-import { IMessage } from "../message-list/types";
 
 export default function MessageFooter() {
   const updateMessages = useSetRecoilState(messagesAtom);
@@ -14,20 +13,33 @@ export default function MessageFooter() {
 
   const handleSubmit = (e: FormEvent) => {
     e.preventDefault();
-    setMessage("");
-
-    updateMessages((prevMessages: any) => {
-      return [
-        ...prevMessages,
-        { id: prevMessages.length + 1, message, createdBy: activeUserId },
-      ];
-    });
+    if (message.trim())
+      updateMessages((prevMessages: any) => {
+        setMessage("");
+        const timestamp = new Date().getTime();
+        return [
+          ...prevMessages,
+          {
+            id: timestamp,
+            message,
+            createdBy: 0,
+            to: activeUserId,
+          },
+          {
+            id: timestamp + Math.random(),
+            message: `receiver message ${timestamp}`,
+            createdBy: activeUserId,
+            to: 0,
+          },
+        ];
+      });
+    else alert("Please enter message before submit");
   };
 
   return (
     <form onSubmit={handleSubmit} className={footerStyles.form}>
       <Input value={message} onChange={(e) => setMessage(e.target.value)} />
-      <Button>Send</Button>
+      <Button onClick={handleSubmit}>Send</Button>
     </form>
   );
 }

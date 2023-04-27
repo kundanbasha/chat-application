@@ -12,10 +12,12 @@ export default function UserItem({ user }: Props) {
 
   return (
     <Flex
-      p="12px 24px 12px 6px"
-      borderRadius="4px"
+      p="12px 24px 12px 12px"
+      borderBottom="1px solid"
+      borderBottomColor="gray.100"
       _hover={{
         backgroundColor: "gray.100",
+        cursor: "pointer",
       }}
       onClick={() => setActiveUser(user.id)}
     >

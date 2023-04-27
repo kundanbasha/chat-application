@@ -8,10 +8,10 @@ export default function UsersList() {
   const users = useRecoilValue(usersAtom);
 
   return (
-    <Flex direction="column">
+    <>
       {users.map((user: IUser) => (
         <UserItem key={user.id} user={user} />
       ))}
-    </Flex>
+    </>
   );
 }

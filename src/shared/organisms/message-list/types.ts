@@ -1,5 +1,6 @@
 export interface IMessage {
   id: number;
   message: string;
-  createdBy: string;
+  createdBy: number;
+  to: number;
 }

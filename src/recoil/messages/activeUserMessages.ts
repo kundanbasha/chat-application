@@ -8,8 +8,11 @@ const activeUserMessages = selector({
   get: ({ get }): IMessage[] => {
     const activeUserId = get(activeUserAtom);
     const messages = get(messagesAtom);
+    const participants = [0, activeUserId];
     return messages.filter(
-      (message: any) => message.createdBy === activeUserId
+      (message: any) =>
+        participants.includes(message.createdBy) &&
+        participants.includes(message.to)
     );
   },
 });
